@@ -54,7 +54,7 @@ const Login = () => {
 
       {/* --- LOGIN CARD --- */}
       <div className="mt-8 mx-auto sm:w-auto ">
-        <div className="py-8 px-4 w-[40vw] sm:w-[90vw] mx-auto shadow-xl sm:rounded-2xl sm:px-10 border border-gray-100">
+        <div className="py-8 px-4 md:w-[40vw] w-[90vw] mx-auto shadow-xl sm:rounded-2xl sm:px-10 border border-gray-100">
           <form className="space-y-6" onSubmit={handleLogin}>
 
             {/* Employee ID Input */}
