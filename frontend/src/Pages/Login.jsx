@@ -19,7 +19,7 @@ const Login = () => {
 
     try {
 
-    const baseURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000'
+    const baseURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
 
       const response = await axios.post(`${baseURL}/api/auth/login`, {
         employeeId,
@@ -33,8 +33,17 @@ const Login = () => {
       console.log('Login Successful:', user.name);
       navigate('/')
     } catch (err) {
-      setError(err.response?.data?.message || 'Something went wrong!')
-    } finally {
+  console.error('LOGIN ERROR:', err);
+  console.error('Response:', err.response);
+  console.error('Request:', err.request);
+  console.error('Message:', err.message);
+
+  setError(
+    err.response?.data?.message ||
+    err.message ||
+    'Something went wrong!'
+  );
+} finally {
       setLoading(false);
     }
   }
@@ -44,8 +53,8 @@ const Login = () => {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 animate-in fade-in duration-500">
 
       {/* --- LOGIN CARD --- */}
-      <div className="mt-8 sm:mx-auto  ">
-        <div className="py-8 px-4 w-[90vw] mx-auto shadow-xl sm:rounded-2xl sm:px-10 border border-gray-100">
+      <div className="mt-8 mx-auto sm:w-auto ">
+        <div className="py-8 px-4 w-[40vw] sm:w-[90vw] mx-auto shadow-xl sm:rounded-2xl sm:px-10 border border-gray-100">
           <form className="space-y-6" onSubmit={handleLogin}>
 
             {/* Employee ID Input */}

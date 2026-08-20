@@ -22,7 +22,7 @@ const Departments = () => {
     // 2. Departments Fetch karna
     const fetchDepartments = async () => {
       try {
-        const baseURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000'
+        const baseURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'
         const response = await axios.get(`${baseURL}/api/departments`);
         setDepartments(response.data);
         setLoading(false);

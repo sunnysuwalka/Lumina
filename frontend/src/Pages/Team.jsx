@@ -33,7 +33,7 @@ const Team = () => {
         const parsedUser = JSON.parse(user);
         setUserData(parsedUser);
 
-        const baseURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000'
+        const baseURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'
 
         const response = await axios.get(`${baseURL}/api/users/team/${parsedUser.department}`) ;
         setTeamMembers(response.data);

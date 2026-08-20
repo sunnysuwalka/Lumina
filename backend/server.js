@@ -15,13 +15,15 @@ dotenv.config();
 
 const frontendURL = process.env.FRONTEND_URL || 'http://localhost:5173'; 
 
+const app = express();
+
 app.use(cors({
   origin: frontendURL, 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true 
 }));
 
-const app = express();
+
 
 // Middleware
 app.use(express.json());
